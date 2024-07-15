@@ -7,6 +7,8 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
+import {Link} from "expo-router";
+
 export default function TabTwoScreen() {
   return (
     <ParallaxScrollView
@@ -83,6 +85,11 @@ export default function TabTwoScreen() {
             </ThemedText>
           ),
         })}
+      </Collapsible>
+      <Collapsible title="Screens">
+      <Link href="/views/topic">
+          <ThemedText type="link">Topic</ThemedText>
+      </Link>
       </Collapsible>
     </ParallaxScrollView>
   );
