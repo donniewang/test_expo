@@ -480,10 +480,10 @@ export default function Topic() {
                     inputBoxHeight={inputBoxHeight}
                     style={{
                         zIndex: 10,
-			position: "absolute",
-            		bottom: 0,
-            		left: 0,
-            		right: 0,
+			            position: "absolute",
+            		    bottom: (safeBottomHeight+keyboardHeight),
+            		    left: 0,
+            		    right: 0,
                         height:inputBoxHeight,
                     }}
                 >
@@ -613,6 +613,10 @@ export default function Topic() {
             )}
             <SafeBottomBox
                 style={{
+                    position: "absolute",
+                    bottom: keyboardHeight,
+                    left: 0,
+                    right: 0,
                     height: safeBottomHeight,
                     backgroundColor:"#22313f",
                 }}
