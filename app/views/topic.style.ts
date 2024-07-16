@@ -199,8 +199,8 @@ export const FullScreenButton = styled.View`
 
 export const FullScreenButtonVideo = styled.View`
   position: absolute;
-  top: ${Platform.OS === "macos" ? 8 : 10}px;
-  left: ${Platform.OS === "macos" ? 50 : 6}px;
+  top: ${Platform.OS === "ios" ? 8 : 10}px;
+  left: ${Platform.OS === "ios" ? 50 : 6}px;
 `;
 
 export const TopicOutline = styled.View`

@@ -274,7 +274,7 @@ export default function Topic() {
 
 
 
-    const [safeBottomHeight, setSafeBottomHeight] = useState<number>(bottom - (Platform.OS === "macos" ? 15 : 0));
+    const [safeBottomHeight, setSafeBottomHeight] = useState<number>(bottom - (Platform.OS === "ios" ? 15 : 0));
 
 
     useEffect(() => {
@@ -298,7 +298,7 @@ export default function Topic() {
     console.log(`============================window.height:${windowHeight}, inputBoxHeight:${inputBoxHeight}, keyboardHeight:${keyboardHeight}, top:${top}, safeBottomHeight:${safeBottomHeight}, bottom:${bottom}`);
     
     return (
-        <KeyboardAvoidingView behavior={Platform.OS !== "android" ? "padding" : undefined} style={{ flex: 1, backgroundColor: colorScheme.bg, position:"relative" }}>
+        <KeyboardAvoidingView behavior={Platform.OS !== "android" ? "padding" : "padding"} style={{ flex: 1, backgroundColor: colorScheme.bg, position:"relative" }}>
 
             <View style={{ zIndex: 9998,backgroundColor:"#FF0000",position:"absolute",right:0,bottom:0,width:30,height:(windowHeight) }}></View>
 
@@ -313,11 +313,11 @@ export default function Topic() {
             <View style={{
                 zIndex:1,
                 backgroundColor: colorScheme.bg,
-                display:"flex",
-                flexDirection:"column",
-                alignItems:"flex-start",
-                justifyContent:"flex-start",
-                height:(windowHeight - top - headerHeight - inputBoxHeight - safeBottomHeight - keyboardHeight) + headerHeight + top
+                // display:"flex",
+                // flexDirection:"column",
+                // alignItems:"flex-start",
+                // justifyContent:"flex-start",
+                // height:(windowHeight - top - headerHeight - inputBoxHeight - safeBottomHeight - keyboardHeight) + headerHeight + top
             }}>
                 <View style={{
                     paddingTop:top,
@@ -488,7 +488,7 @@ export default function Topic() {
                     style={{
                         zIndex: 10,
 			            position: "absolute",
-            		    bottom: (safeBottomHeight+keyboardHeight),
+            		    bottom: Platform.OS === "android" ? 0 : (safeBottomHeight+keyboardHeight),
             		    left: 0,
             		    right: 0,
                         height:inputBoxHeight,
@@ -621,7 +621,7 @@ export default function Topic() {
             <SafeBottomBox
                 style={{
                     position: "absolute",
-                    bottom: keyboardHeight,
+                    bottom: Platform.OS === "android" ? 0 : keyboardHeight,
                     left: 0,
                     right: 0,
                     height: safeBottomHeight,
