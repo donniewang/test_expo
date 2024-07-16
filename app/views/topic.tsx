@@ -298,7 +298,7 @@ export default function Topic() {
     console.log(`============================window.height:${windowHeight}, inputBoxHeight:${inputBoxHeight}, keyboardHeight:${keyboardHeight}, top:${top}, safeBottomHeight:${safeBottomHeight}, bottom:${bottom}`);
     
     return (
-        <KeyboardAvoidingView behavior={Platform.OS !== "android" ? "padding" : undefined} style={{ flex: 1, backgroundColor: colorScheme.bg }}>
+        <KeyboardAvoidingView behavior={Platform.OS !== "android" ? "padding" : undefined} style={{ flex: 1, backgroundColor: colorScheme.bg, position:"relative" }}>
 
             <View style={{ zIndex: 9998,backgroundColor:"#FF0000",position:"absolute",right:0,bottom:0,width:30,height:(windowHeight) }}></View>
 
@@ -310,9 +310,16 @@ export default function Topic() {
 
             <View style={{ zIndex: 9999,backgroundColor:"#0000FF",position:"absolute",right:0,bottom:(safeBottomHeight+keyboardHeight),width:20,height:(inputBoxHeight) }}></View>
 
-            <View style={{ zIndex:1,backgroundColor: colorScheme.bg }}>
-
-                <View style={{ 
+            <View style={{
+                zIndex:1,
+                backgroundColor: colorScheme.bg,
+                display:"flex",
+                flexDirection:"column",
+                alignItems:"flex-start",
+                justifyContent:"flex-start",
+                height:(windowHeight - top - headerHeight - inputBoxHeight - safeBottomHeight - keyboardHeight) + headerHeight + top
+            }}>
+                <View style={{
                     paddingTop:top,
                 }}>
                     <Header isItems={backButton || !!title || topic.isConnected} style={{ height:headerHeight }}>
@@ -481,7 +488,7 @@ export default function Topic() {
                     style={{
                         zIndex: 10,
 			            position: "absolute",
-            		    bottom: keyboardHeight>0 ? 0 : (safeBottomHeight+keyboardHeight),
+            		    bottom: (safeBottomHeight+keyboardHeight),
             		    left: 0,
             		    right: 0,
                         height:inputBoxHeight,
@@ -614,7 +621,7 @@ export default function Topic() {
             <SafeBottomBox
                 style={{
                     position: "absolute",
-                    bottom: keyboardHeight>0 ? 0 : keyboardHeight,
+                    bottom: keyboardHeight,
                     left: 0,
                     right: 0,
                     height: safeBottomHeight,
