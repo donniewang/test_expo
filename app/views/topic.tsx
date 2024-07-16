@@ -481,7 +481,7 @@ export default function Topic() {
                     style={{
                         zIndex: 10,
 			            position: "absolute",
-            		    bottom: (safeBottomHeight+keyboardHeight),
+            		    bottom: keyboardHeight>0 ? 0 : (safeBottomHeight+keyboardHeight),
             		    left: 0,
             		    right: 0,
                         height:inputBoxHeight,
@@ -614,7 +614,7 @@ export default function Topic() {
             <SafeBottomBox
                 style={{
                     position: "absolute",
-                    bottom: keyboardHeight,
+                    bottom: keyboardHeight>0 ? 0 : keyboardHeight,
                     left: 0,
                     right: 0,
                     height: safeBottomHeight,
